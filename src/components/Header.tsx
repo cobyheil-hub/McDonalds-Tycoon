@@ -74,10 +74,10 @@ export default function Header() {
                 <button
                   id="auth-signout-btn"
                   onClick={handleSignOut}
-                  className="px-2 py-1 bg-surface-container border-2 border-[#1E1B1C] rounded font-headline font-bold text-[10px] text-[#1E1B1C] flex items-center gap-1 hover:bg-[#ffe7e2] hover:text-primary transition-all active:scale-95 cursor-pointer"
+                  className="px-2 py-1 bg-surface-container border-2 border-[#1E1B1C] rounded font-headline font-bold text-[10px] text-[#1E1B1C] flex items-center gap-1 hover:bg-[#ffe7e2] hover:text-primary transition-all active:scale-95 cursor-pointer max-w-[140px]"
                 >
                   <span className="material-symbols-outlined text-xs">logout</span>
-                  OUT
+                  <span className="truncate">{(user.displayName || 'Crew Member').toUpperCase()}</span>
                 </button>
               </div>
             ) : (

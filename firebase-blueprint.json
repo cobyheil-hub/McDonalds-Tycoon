@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Represents the user's gamified stats, XP, inventory, coins, and streak.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "xp": { "type": "number" },
+        "coins": { "type": "number" },
+        "streak": { "type": "number" },
+        "role": { "type": "string" },
+        "equippedHoodie": { "type": "boolean" },
+        "equippedVisor": { "type": "boolean" },
+        "equippedShield": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "xp", "coins", "streak"]
+    },
+    "HabitLog": {
+      "title": "HabitLog",
+      "description": "Represents a physical log entry when a user completes a habit, capturing rewards earned.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "habitId": { "type": "string" },
+        "value": { "type": "number" },
+        "timestamp": { "type": "string" },
+        "xpReward": { "type": "number" },
+        "coinReward": { "type": "number" }
+      },
+      "required": ["id", "userId", "habitId", "timestamp"]
+    },
+    "PurchaseLog": {
+      "title": "PurchaseLog",
+      "description": "Represents a log of shop purchases.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "itemId": { "type": "string" },
+        "cost": { "type": "number" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "userId", "itemId", "cost", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Collection of user metrics and preferences."
+    },
+    "/users/{userId}/habits/{habitLogId}": {
+      "schema": "HabitLog",
+      "description": "User specific logs of daily shift habit completions."
+    },
+    "/users/{userId}/purchases/{purchaseLogId}": {
+      "schema": "PurchaseLog",
+      "description": "User specific records of purchased retro merch ornaments."
+    }
+  }
+}

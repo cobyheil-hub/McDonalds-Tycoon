@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>McDonald's Employee Tracker: Lock-In</title>
+    <!-- Retro Fonts CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet" />
+    <!-- Material Design Icons absolute CDN path -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
+    <!-- AI Scan Custom Keyframe Animations -->
+    <style>
+      @keyframes ai-pulse-ring {
+        0% { transform: scale(0.95); opacity: 0.3; }
+        50% { transform: scale(1.05); opacity: 0.8; }
+        100% { transform: scale(0.95); opacity: 0.3; }
+      }
+      @keyframes ai-laser-glide {
+        0% { top: 0%; opacity: 0.6; }
+        50% { top: 100%; opacity: 1; }
+        100% { top: 0%; opacity: 0.6; }
+      }
+      @keyframes ai-rotator {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes ai-text-glow {
+        0%, 100% { opacity: 0.6; text-shadow: 0 0 3px rgba(165,19,0,0.3); }
+        50% { opacity: 1; text-shadow: 0 0 12px rgba(165,19,0,0.8); }
+      }
+      .animate-ai-pulse-ring {
+        animation: ai-pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      .animate-ai-laser-glide {
+        animation: ai-laser-glide 2s ease-in-out infinite;
+      }
+      .animate-ai-rotator {
+        animation: ai-rotator 1.4s linear infinite;
+      }
+      .animate-ai-text-glow {
+        animation: ai-text-glow 1.5s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body class="bg-[#FFF8F8] antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

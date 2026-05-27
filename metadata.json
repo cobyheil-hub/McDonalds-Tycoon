@@ -1,0 +1,6 @@
+{
+  "name": "McDonalds Employee Tracker",
+  "description": "A gamified retro 8-bit habit tracker for McDonalds employees, featuring Sleep Mastery, Posture Correction, and Morning Devotions.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

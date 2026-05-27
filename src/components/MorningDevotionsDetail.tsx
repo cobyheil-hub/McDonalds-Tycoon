@@ -360,6 +360,18 @@ export default function MorningDevotionsDetail({ onBack }: DevotionsProps) {
           +15 XP STREAK LOOT
         </span>
       </div>
+
+      {/* Dev Evaluator: Instantly claim reward */}
+      <button
+        id="devotions-eval-fast-btn"
+        onClick={() => {
+          completeTask('Morning Devotions session', 10, 20, false, true);
+          onBack();
+        }}
+        className="w-full text-center py-1 bg-[#F4E700] border-2 border-black font-headline font-bold text-[9px] uppercase tracking-wide cursor-pointer hover:bg-stone-100"
+      >
+        [Dev Evaluator: Instantly claim reward]
+      </button>
     </div>
   );
 }

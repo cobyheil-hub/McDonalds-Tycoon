@@ -68,7 +68,7 @@ interface GameContextProps {
   incrementStreak: () => void;
   purchaseItem: (itemId: 'hoodie' | 'visor' | 'shield', cost: number) => void;
   equipItem: (itemId: 'hoodie' | 'visor' | 'shield', equip: boolean) => void;
-  completeTask: (taskName: string, xpReward: number, coinReward: number, isCrooked?: boolean) => void;
+  completeTask: (taskName: string, xpReward: number, coinReward: number, isCrooked?: boolean, instant?: boolean) => void;
   fightActiveBoss: () => void;
   selectOpponent: (id: 'karen' | 'sga' | 'bk') => void;
   triggerToast: (message: string, type?: 'success' | 'warning' | 'loot' | 'combat') => void;
@@ -341,7 +341,22 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     triggerToast(`${itemId.toUpperCase()} is now ${equip ? 'EQUIPPED' : 'UNEQUIPPED'}!`, 'success');
   };
 
-  const completeTask = (taskName: string, xpReward: number, coinReward: number, isCrooked?: boolean) => {
+  const completeTask = (taskName: string, xpReward: number, coinReward: number, isCrooked?: boolean, instant?: boolean) => {
+    if (instant) {
+      const coinResult = state.equippedVisor ? Math.round(coinReward * 1.05) : coinReward;
+      const updatedProgress = Math.min(state.shiftProgress + 1, 12);
+      const updated = {
+        ...state,
+        xp: state.xp + xpReward,
+        coins: state.coins + coinResult,
+        shiftProgress: updatedProgress
+      };
+      saveStateToLocal(updated);
+      syncToFirestore(updated);
+      triggerToast(`INSTANTLY CLAIMED: "${taskName}"! Received +${xpReward} XP | +${coinResult} Coins`, 'loot');
+      return;
+    }
+
     if (aiProcessing) return; // Prevent spamming / multiple triggers
 
     // Determine custom text status message based on the habit's theme

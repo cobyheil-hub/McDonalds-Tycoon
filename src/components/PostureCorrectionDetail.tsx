@@ -438,10 +438,8 @@ export default function PostureCorrectionDetail({ onBack }: PostureProps) {
         <button
           id="posture-eval-fast-btn"
           onClick={() => {
-            completeTask('Posture Correction session', 10, 20, simulatedSlouch);
-            if (!simulatedSlouch) {
-              onBack();
-            }
+            completeTask('Posture Correction session', 10, 20, false, true);
+            onBack();
           }}
           className="w-full text-center py-1 bg-[#F4E700] border-2 border-black font-headline font-bold text-[9px] uppercase tracking-wide cursor-pointer hover:bg-stone-100"
         >
